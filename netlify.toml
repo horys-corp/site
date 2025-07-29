@@ -16,6 +16,12 @@
   to = "/servicos.html"
   status = 200
 
+# Redirecionamento após envio do formulário
+[[redirects]]
+  from = "/thank-you"
+  to = "/obrigado.html"
+  status = 200
+
 # Headers de segurança
 [[headers]]
   for = "/*"
