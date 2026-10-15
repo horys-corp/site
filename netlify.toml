@@ -2,21 +2,38 @@
   # Diretório onde estão os arquivos do site
   publish = "."
 
-[build.environment]
-  # Versão do Node.js (opcional, para futuras melhorias)
-  NODE_VERSION = "18"
-
-# Configurações para formulários
-[build.processing]
-  skip_processing = false
-
-# Redirecionamentos (opcional)
+# Endereços curtos e compatibilidade com links existentes
 [[redirects]]
   from = "/servicos"
-  to = "/servicos.html"
+  to = "/#criamos"
+  status = 301
+
+[[redirects]]
+  from = "/servicos.html"
+  to = "/#criamos"
+  status = 301
+
+[[redirects]]
+  from = "/privacidade"
+  to = "/privacidade.html"
   status = 200
 
-# Redirecionamento após envio do formulário
+[[redirects]]
+  from = "/privacy"
+  to = "/privacidade.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacidade.html"
+  status = 200
+
+[[redirects]]
+  from = "/termos"
+  to = "/termos.html"
+  status = 200
+
+# Compatibilidade com a antiga página de contato
 [[redirects]]
   from = "/thank-you"
   to = "/obrigado.html"
@@ -35,14 +52,19 @@
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=3600, must-revalidate"
 
 [[headers]]
   for = "/*.svg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

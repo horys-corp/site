@@ -1,251 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horys - Consultoria em T.I. Especializada</title>
-    <meta name="description" content="Consultoria em T.I. com mais de 10 anos de experiência. Especialistas em transformação digital, redução de custos, segurança e escalabilidade para empresas de tecnologia.">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="128x128" href="favicon-128x128.png">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090910">
+  <title>Horys — Sistemas, apps e games. Ideias em outra dimensão.</title>
+  <meta name="description" content="Somos a Horys. Criamos sistemas, aplicativos e games com propósito e personalidade. Da primeira ideia à sua próxima grande criação.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Horys">
+  <meta property="og:title" content="Horys — Ideias em outra dimensão.">
+  <meta property="og:description" content="Sistemas, apps e games. Tecnologia feita para tirar boas ideias do papel.">
+  <meta property="og:url" content="https://horys.dev/">
+  <meta property="og:image" content="https://horys.dev/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://horys.dev/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="assets/fonts/press-start-2p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=retro2">
+  <style>
+    /* O vidro CRT e o glitch fazem parte da identidade da página. */
+    .crt-screen::after { content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / var(--scanline-opacity)) 2px 4px); box-shadow: inset 0 0 60px #060711; border-radius: inherit; }
+    .glitch { animation: glitch 9s infinite; }
+    @keyframes glitch { 0%, 93%, 96%, 100% { transform: translate(0); } 94% { transform: translate(-2px, 1px) skewX(-2deg); } 95% { transform: translate(2px, -1px) skewX(2deg); } }
+    @media (prefers-reduced-motion: reduce) { .glitch { animation: none; } }
+  </style>
+  <script src="script.js?v=retro2" defer></script>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-brand">
-                <img src="logo.svg" alt="Horys Logo" class="nav-logo" />
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#experience">Quem Somos</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2 class="hero-title">Consultoria em T.I. Especializada</h2>
-                    <p class="hero-subtitle">Transformamos empresas através de soluções tecnológicas inteligentes há mais de 10 anos</p>
-                    <p class="hero-description">Especializados em consultoria para empresas de T.I., oferecemos arquitetura de soluções, implementação de metodologias ágeis e transformação digital com foco na redução de custos e aumento da escalabilidade.</p>
-                    <div class="hero-actions">
-                        <a href="#contact" class="btn btn-primary">Iniciar Projeto</a>
-                        <a href="#experience" class="btn btn-secondary">Nossa Experiência</a>
-                    </div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navegação principal">
+      <a class="brand" href="./" aria-label="Horys — início"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 4h7v9h10V4h7v24h-7v-9H11v9H4V4Z" fill="currentColor"/><path d="M14 13h4v6h-4z" fill="#090910"/></svg><span>horys<span class="brand-dot">.</span></span></a>
+      <div class="desktop-links"><a href="#sobre">Sobre nós</a><a href="#criamos">O que criamos</a><a href="privacidade.html">Privacidade</a></div>
+      <a class="nav-cta" href="mailto:contato@horys.dev">Vamos conversar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </nav>
+    <nav class="mobile-menu container" id="mobile-menu" aria-label="Navegação móvel" hidden><a href="#sobre">Sobre nós</a><a href="#criamos">O que criamos</a><a href="privacidade.html">Privacidade</a><a href="mailto:contato@horys.dev">Vamos conversar</a></nav>
+  </header>
+  <main id="conteudo">
+    <section class="hero container" id="sobre" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> PEQUENO ESTÚDIO. GRANDES POSSIBILIDADES.</p>
+        <h1 id="hero-title">Ideias em<br>outra<br><span class="glitch">dimensão<span class="title-dot">.</span></span></h1>
+        <p class="hero-description">Somos a Horys. Transformamos boas ideias em<br class="desktop-break"> sistemas, apps e games que fazem sentido.</p>
+        <div class="hero-actions"><a class="button button-primary" href="mailto:contato@horys.dev">Bora criar algo <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a><a class="button button-ghost" href="#criamos">Explore nossas ideias <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a></div>
+        <p class="hero-footnote"><span>EST. 2019</span><span class="footnote-divider"></span> FEITO DE CÓDIGO & CURIOSIDADE</p>
+      </div>
+      <div class="terminal-scene" aria-label="Terminal interativo da Horys">
+        <div class="scene-coordinate" aria-hidden="true">FIG. 01 — UMA JANELA PARA O POSSÍVEL</div>
+        <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+        <span class="scene-plus plus-one" aria-hidden="true">+</span><span class="scene-plus plus-two" aria-hidden="true">+</span>
+        <div class="computer">
+          <div class="monitor">
+            <div class="monitor-top"><span>HORYS COMPUTADOR PESSOAL</span><span>H-01</span></div>
+            <div class="screen-bezel">
+              <div class="crt-screen" data-mode="sistemas">
+                <div class="screen-top"><span>HORYS.EXE</span><span class="screen-live"><i></i> EM EXECUÇÃO</span></div>
+                <div class="screen-landscape" aria-hidden="true">
+                  <div class="retro-sun"></div>
+                  <svg class="wire-mountains" viewBox="0 0 400 180" preserveAspectRatio="none" fill="none"><path d="m0 140 43-56 37 34 53-76 50 81 37-39 38 31 47-70 33 61 62-31v105H0Z" fill="#111024"/><path d="m0 140 43-56 37 34 53-76 50 81 37-39 38 31 47-70 33 61 62-31M43 84l8 72m29-38 19 46m34-122-3 112m53-31 6 38m31-77-9 75m47-44 4 48m43-118-7 116m40-55 8 59m-340-38 400 11" stroke="#5d34d0" stroke-width="1"/></svg>
+                  <div class="perspective-grid"></div>
+                  <div class="screen-emblem">
+                    <svg class="mode-icon" data-icon="sistemas" viewBox="0 0 80 80" fill="none"><rect x="11" y="15" width="58" height="41" rx="4"/><path d="M26 67h28M40 56v11M29 29l-7 7 7 7m22-14 7 7-7 7m-9-17-5 20"/></svg>
+                    <svg class="mode-icon" data-icon="apps" viewBox="0 0 80 80" fill="none" hidden><rect x="23" y="8" width="34" height="64" rx="6"/><path d="M34 16h12M37 63h6M33 32h14v14H33z"/></svg>
+                    <svg class="mode-icon" data-icon="games" viewBox="0 0 80 80" fill="none" hidden><path d="M27 24h26c8 0 12 6 14 15l5 18c2 8-5 13-11 7l-11-9H30l-11 9C13 70 6 65 8 57l5-18c2-9 6-15 14-15Z"/><path d="M23 35v15m-7-8h14m22-4h1m8 9h1M33 24l-2-8h18l-2 8"/></svg>
+                  </div>
                 </div>
+                <div class="screen-caption"><span class="screen-prompt">&gt; criar_<span id="terminal-word">sistemas</span><span class="terminal-cursor" aria-hidden="true">▊</span></span><span class="screen-caption-sub" id="terminal-caption">MENOS COMPLEXIDADE. MAIS POSSIBILIDADES.</span></div>
+                <div class="screen-bottom"><span>IDEIA ENCONTRADA.</span><span>PRONTO PARA CRIAR <span aria-hidden="true">↗</span></span></div>
+              </div>
             </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">Sobre a Horys</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>A Horys é uma empresa de consultoria em T.I. fundada em 2019, especializada em transformação digital e otimização de processos tecnológicos. Nossa missão é ajudar empresas a alcançarem maior eficiência, segurança e escalabilidade.</p>
-                        <p>Com uma abordagem consultiva e metodologias ágeis comprovadas, oferecemos soluções personalizadas que geram resultados tangíveis. Nossa expertise abrange desde a implementação de frameworks ágeis até arquitetura de soluções complexas.</p>
-                        <div class="stats">
-                            <div class="stat">
-                                <span class="stat-number">10+</span>
-                                <span class="stat-label">Anos de Experiência</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">6+</span>
-                                <span class="stat-label">Anos no Mercado</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">100+</span>
-                                <span class="stat-label">Projetos Entregues</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="experience">
-            <div class="container">
-                <h2 class="section-title">Quem Somos?</h2>
-                <div class="who-we-are">
-                    <div class="who-we-are-content">
-                        <p class="intro-text">Somos uma empresa de consultoria de T.I. com mais de 10 anos de mercado, nosso foco é ajudar empresas de T.I. a reduzir seus custos, ter segurança e maior escalabilidade.</p>
-                        
-                        <div class="services-overview">
-                            <div class="service-highlight">
-                                <div class="service-icon">🚀</div>
-                                <h3>Transformação Digital</h3>
-                                <p>Ajudamos as empresas a fazerem a transformação digital, auxiliando na implementação correta do Scrum, além da criação de um ambiente novo e ágil.</p>
-                            </div>
-                            
-                            <div class="service-highlight">
-                                <div class="service-icon">🔧</div>
-                                <h3>Consultoria Especializada</h3>
-                                <p>Damos consultoria especializada para empresas de T.I., disponibilizamos um arquiteto de soluções dentro da empresa para identificar problemas e gargalos.</p>
-                            </div>
-                            
-                            <div class="service-highlight">
-                                <div class="service-icon">📈</div>
-                                <h3>Plano de Ação</h3>
-                                <p>Criamos um plano de ação estratégico ao longo dos meses, garantindo resultados mensuráveis e melhoria contínua dos processos.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <section class="technologies">
-            <div class="container">
-                <h2 class="section-title">Tecnologias que Dominamos</h2>
-                <div class="tech-grid">
-                    <div class="tech-category">
-                        <h3>Frontend</h3>
-                        <div class="tech-list">
-                            <span class="tech-item">React</span>
-                            <span class="tech-item">Vue.js</span>
-                            <span class="tech-item">Angular</span>
-                            <span class="tech-item">Next.js</span>
-                            <span class="tech-item">TypeScript</span>
-                        </div>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Backend</h3>
-                        <div class="tech-list">
-                            <span class="tech-item">Node.js</span>
-                            <span class="tech-item">Python</span>
-                            <span class="tech-item">Java</span>
-                            <span class="tech-item">C#</span>
-                            <span class="tech-item">Go</span>
-                        </div>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Cloud & DevOps</h3>
-                        <div class="tech-list">
-                            <span class="tech-item">AWS</span>
-                            <span class="tech-item">Azure</span>
-                            <span class="tech-item">Docker</span>
-                            <span class="tech-item">Kubernetes</span>
-                            <span class="tech-item">Terraform</span>
-                        </div>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Databases</h3>
-                        <div class="tech-list">
-                            <span class="tech-item">PostgreSQL</span>
-                            <span class="tech-item">MongoDB</span>
-                            <span class="tech-item">Redis</span>
-                            <span class="tech-item">MySQL</span>
-                            <span class="tech-item">Elasticsearch</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="services">
-            <div class="container">
-                <h2 class="section-title">Nossos Serviços</h2>
-                <p class="services-intro">Oferecemos consultoria especializada e desenvolvimento de software sob encomenda, com foco na transformação digital e otimização de processos.</p>
-                
-                <div class="services-grid">
-                    <div class="service-item">
-                        <div class="service-icon">🏗️</div>
-                        <h3>Arquitetura de Soluções</h3>
-                        <p>Disponibilizamos arquitetos especializados para identificar problemas, gargalos e criar planos de ação estratégicos para otimização de sistemas.</p>
-                        <a href="servicos.html#arquitetura" class="service-link">Saiba mais →</a>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">💻</div>
-                        <h3>Desenvolvimento Sob Encomenda</h3>
-                        <p>Criamos software personalizado que atende exatamente às necessidades do seu negócio, utilizando tecnologias modernas e práticas ágeis.</p>
-                        <a href="servicos.html#software" class="service-link">Saiba mais →</a>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">�</div>
-                        <h3>Transformação Digital</h3>
-                        <p>Auxiliamos na implementação correta do Scrum e criação de ambientes ágeis, garantindo processos otimizados e equipes de alta performance.</p>
-                        <a href="servicos.html#transformacao" class="service-link">Saiba mais →</a>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">🎯</div>
-                        <h3>Consultoria Especializada</h3>
-                        <p>Consultores dedicados trabalhando dentro da sua empresa, proporcionando mentoria técnica e estratégica contínua.</p>
-                        <a href="servicos.html#consultoria" class="service-link">Saiba mais →</a>
-                    </div>
-                </div>
-                
-                <div class="services-cta">
-                    <a href="servicos.html" class="btn btn-primary">Ver Todos os Serviços</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Vamos Conversar?</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Pronto para transformar suas ideias em realidade</h3>
-                        <p>Entre em contato conosco para discutirmos como a Horys pode impulsionar seus projetos tecnológicos e acelerar a transformação digital do seu negócio.</p>
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <span class="contact-icon">📧</span>
-                                <a href="mailto:contato@horys.dev">contato@horys.dev</a>
-                            </div>
-                            <div class="contact-method">
-                                <span class="contact-icon">💼</span>
-                                <a href="https://linkedin.com/in/arturveiga" target="_blank">LinkedIn</a>
-                            </div>
-                            <div class="contact-method">
-                                <span class="contact-icon">📱</span>
-                                <a href="https://wa.me/5511999999999">WhatsApp</a>
-                            </div>
-                        </div>
-                    </div>
-                    <form class="contact-form" id="contactForm" name="contact" method="POST" netlify data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-redirect="/obrigado.html">
-                        <!-- Campo oculto para detectar bots -->
-                        <input type="hidden" name="bot-field" />
-                        
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Empresa</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Horys - Soluções Tecnológicas Avançadas. Todos os direitos reservados.</p>
+            <div class="monitor-chin"><span class="monitor-brand">horys<span>.</span></span><div class="monitor-vents" aria-hidden="true"></div><span class="power-light" aria-hidden="true"></span><span class="power-button" aria-hidden="true"></span></div>
+          </div>
+          <div class="monitor-neck" aria-hidden="true"></div><div class="monitor-base" aria-hidden="true"></div>
         </div>
-    </footer>
-
-    <script src="script.js"></script>
+        <div class="terminal-controls" role="group" aria-label="Escolha o que criar"><span class="control-label">SELECIONE O MODO</span><div class="mode-buttons"><button type="button" data-terminal-mode="sistemas" aria-pressed="true">01 <span>Sistemas</span></button><button type="button" data-terminal-mode="apps" aria-pressed="false">02 <span>Apps</span></button><button type="button" data-terminal-mode="games" aria-pressed="false">03 <span>Games</span></button></div></div>
+        <p class="sr-only" id="terminal-announcement" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+    <div class="signal-strip" aria-hidden="true"><div class="container signal-inner"><span><i></i> CÓDIGO COM PROPÓSITO</span><span class="signal-cross">+</span><span>CRIATIVIDADE SEM LIMITES</span><span class="signal-cross">+</span><span>DO PRIMEIRO PIXEL AO ÚLTIMO COMMIT</span><svg class="signal-spark" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5"/></svg></div></div>
+    <section class="creation-section container" id="criamos" aria-labelledby="creation-title">
+      <div class="section-heading"><div><p class="eyebrow section-eyebrow"><span>//</span> O QUE CRIAMOS</p><h2 id="creation-title">Três caminhos.<br>Infinitas possibilidades<span>.</span></h2></div><p>Para o dia a dia, para o seu negócio<br>ou para apertar o play.</p></div>
+      <div class="creation-grid">
+        <article class="creation-card systems-card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4m-4-13-2 3 2 2m8-5 2 3-2 2m-3-6-2 8"/></svg></span><span class="card-number">[ 01 ]</span></div><h3>Sistemas</h3><p>Software sob medida para simplificar processos e dar espaço ao que importa: o seu negócio.</p><div class="card-bottom"><span>WEB & SOFTWARE</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 8 4 4-4 4m8 0h8"/></svg></div></article>
+        <article class="creation-card apps-card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4m-3 14h2"/></svg></span><span class="card-number">[ 02 ]</span></div><h3>Apps</h3><p>Boas ideias que cabem no bolso. Aplicativos práticos, pensados para pessoas e empresas.</p><div class="card-bottom"><span>UMA IDEIA. MUITAS TELAS.</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 8 4 4-4 4m8 0h8"/></svg></div></article>
+        <article class="creation-card games-card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7h8c3 0 4 2 5 5l1 5c.6 3-1.5 4-3 2l-3-3H8l-3 3c-1.5 2-3.6 1-3-2l1-5c1-3 2-5 5-5Z"/><path d="M7 10v5m-2.5-2.5h5m6.5-1h.01m2 3h.01M9 7l1-3h4l1 3"/></svg></span><span class="card-number">[ 03 ]</span></div><h3>Games</h3><p>Universos para explorar, desafios para encarar e experiências para dar vontade de jogar de novo.</p><div class="card-bottom"><span>APERTE O PLAY</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 8 4 4-4 4m8 0h8"/></svg></div></article>
+      </div>
+    </section>
+    <section class="contact-section container" id="contato" aria-labelledby="contact-title"><div class="contact-panel"><div class="contact-copy"><p class="eyebrow"><span class="status-dot"></span> CANAL ABERTO PARA BOAS IDEIAS</p><h2 id="contact-title">Qual é o seu<br>próximo <span>projeto?</span></h2><p>Conte pra gente. O primeiro passo é uma conversa.</p><a class="contact-email" href="mailto:contato@horys.dev">contato@horys.dev <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div><div class="contact-art" aria-hidden="true"><span class="contact-bracket">[</span><svg viewBox="0 0 80 80" fill="none"><rect x="9" y="17" width="62" height="46" rx="3"/><path d="m10 20 30 24 30-24M10 61l21-20m38 20L49 41"/></svg><span class="contact-bracket">]</span><span class="contact-art-label">NOVA MENSAGEM. NOVO COMEÇO.</span></div></div></section>
+  </main>
+  <footer class="site-footer container"><div class="footer-main"><a class="brand" href="./" aria-label="Horys — início"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 4h7v9h10V4h7v24h-7v-9H11v9H4V4Z" fill="currentColor"/><path d="M14 13h4v6h-4z" fill="#090910"/></svg><span>horys<span class="brand-dot">.</span></span></a><p>Um pouco retrô. Sempre em frente.</p><div class="social-links"><a href="https://github.com/horys-corp" target="_blank" rel="noopener noreferrer" aria-label="Horys no GitHub (abre em nova aba)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m12 5v-4c0-1-.3-1.8-1-2 3-.3 6-1.5 6-6a5 5 0 0 0-1.3-3.5c.1-.5.6-2-.2-3.5 0 0-1.2-.4-3.7 1.3a13 13 0 0 0-6.6 0C5.7 2.6 4.5 3 4.5 3c-.8 1.5-.3 3-.2 3.5A5 5 0 0 0 3 10c0 4.5 3 5.7 6 6-.5.5-1 1.3-1 2v4"/></svg></a><a href="https://linkedin.com/in/arturveiga" target="_blank" rel="noopener noreferrer" aria-label="Artur Veiga no LinkedIn (abre em nova aba)"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7m0-10v.01M11 17v-7m0 3a3 3 0 0 1 6 0v4"/></svg></a><a href="mailto:contato@horys.dev" aria-label="Enviar e-mail à Horys"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a></div></div><div class="footer-bottom"><p>© 2026 Horys. Todos os direitos reservados.</p><nav aria-label="Navegação do rodapé"><a href="#criamos">O que criamos</a><a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="#contato">Contato</a></nav><span class="footer-status"><i></i> FEITO NO BRASIL</span></div></footer>
 </body>
 </html>

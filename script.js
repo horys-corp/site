@@ -1,281 +1,123 @@
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
+"use strict";
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Contact form handling
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const company = formData.get('company');
-    const message = formData.get('message');
-    
-    // Basic validation
-    if (!name || !email || !message) {
-        showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNotification('Por favor, insira um email válido.', 'error');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Enviando...';
-    submitButton.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        // Here you would normally send the data to your server
-        // For now, we'll just show a success message
-        showNotification('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
-        
-        // Reset form
-        this.reset();
-        
-        // Reset button
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-        
-        // You can integrate with services like EmailJS, Netlify Forms, or your own backend
-        console.log('Form data:', { name, email, company, message });
-        
-    }, 2000);
-});
-
-// Notification system
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <span>${message}</span>
-        <button class="notification-close">&times;</button>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        max-width: 400px;
-        animation: slideInRight 0.3s ease-out;
-    `;
-    
-    // Add close functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.style.cssText = `
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0;
-        margin-left: auto;
-    `;
-    
-    closeBtn.addEventListener('click', () => {
-        notification.remove();
-    });
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.remove();
-        }
-    }, 5000);
+// Navegação utilizável por teclado e leitores de tela.
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+if (menuToggle && mobileMenu) {
+  function closeMenu(returnFocus = false) {
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menu");
+    mobileMenu.hidden = true;
+    if (returnFocus) menuToggle.focus();
+  }
+  menuToggle.addEventListener("click", () => {
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
+    menuToggle.setAttribute("aria-label", expanded ? "Abrir menu" : "Fechar menu");
+    mobileMenu.hidden = expanded;
+  });
+  mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => closeMenu()));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !mobileMenu.hidden) closeMenu(true);
+  });
+  document.addEventListener("click", (event) => {
+    if (!mobileMenu.hidden && !event.target.closest(".site-header")) closeMenu();
+  });
+  window.matchMedia("(min-width: 601px)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
+  });
 }
 
-// Add notification animation styles
-const notificationStyles = document.createElement('style');
-notificationStyles.textContent = `
-    @keyframes slideInRight {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-`;
-document.head.appendChild(notificationStyles);
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+// O visitante escolhe a criação exibida no terminal, sem rastreamento.
+const terminalModes = {
+  sistemas: { caption: "MENOS COMPLEXIDADE. MAIS POSSIBILIDADES.", announcement: "Modo Sistemas: software sob medida para o seu negócio." },
+  apps: { caption: "BOAS IDEIAS QUE CABEM NO BOLSO.", announcement: "Modo Apps: aplicativos para pessoas e empresas." },
+  games: { caption: "SEU PRÓXIMO UNIVERSO COMEÇA AQUI.", announcement: "Modo Games: universos e experiências para jogar." },
 };
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animation
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section, .experience-item, .service-item');
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+const terminalScreen = document.querySelector(".crt-screen");
+document.querySelectorAll("[data-terminal-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const mode = button.dataset.terminalMode;
+    if (!terminalScreen || !terminalModes[mode]) return;
+    terminalScreen.dataset.mode = mode;
+    document.querySelectorAll("[data-terminal-mode]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+    document.querySelectorAll("[data-icon]").forEach((icon) => icon.toggleAttribute("hidden", icon.dataset.icon !== mode));
+    document.getElementById("terminal-word").textContent = mode;
+    document.getElementById("terminal-caption").textContent = terminalModes[mode].caption;
+    document.getElementById("terminal-announcement").textContent = terminalModes[mode].announcement;
+  });
 });
 
-// Counter animation for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        const increment = target / 100;
-        let current = 0;
-        
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ? '+' : '');
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
-            }
-        };
-        
-        updateCounter();
+// Entrada em sequência, mantendo o conteúdo visível sem JavaScript.
+const creationSection = document.querySelector(".creation-section");
+if (creationSection) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const revealItems = creationSection.querySelectorAll(".section-heading, .creation-card");
+  let revealObserver;
+
+  const revealAll = () => {
+    revealItems.forEach((item) => {
+      item.classList.remove("reveal-pending");
+      item.classList.add("is-revealed");
     });
-}
+    revealObserver?.disconnect();
+  };
 
-// Trigger counter animation when stats section is visible
-const statsSection = document.querySelector('.stats');
-if (statsSection) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    statsObserver.observe(statsSection);
-}
+  if (!reducedMotion.matches && "IntersectionObserver" in window) {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item, index) => {
+      item.style.setProperty("--reveal-delay", (Math.max(0, index - 1) * 90) + "ms");
+      item.classList.add("reveal-pending");
+      revealObserver.observe(item);
+    });
+  }
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) revealAll();
+  });
 
-// Header background on scroll
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-});
+  // Uma atualização por frame; telas de toque e movimento reduzido ficam estáticos.
+  const pointerEffects = window.matchMedia(
+    "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
+  );
+  creationSection.querySelectorAll(".creation-card").forEach((card) => {
+    let frame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
 
-// Add loading state management
-document.addEventListener('DOMContentLoaded', function() {
-    // Hide loading spinner if exists
-    const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.style.display = 'none';
-    }
-    
-    // Add fade-in class to hero section
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.classList.add('fade-in');
-    }
-});
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+    const resetCard = () => {
+      window.cancelAnimationFrame(frame);
+      frame = 0;
+      card.classList.remove("is-pointing");
+      ["--pointer-x", "--pointer-y", "--rotate-x", "--rotate-y"].forEach(
+        (property) => card.style.removeProperty(property)
+      );
     };
+
+    card.addEventListener("pointermove", (event) => {
+      if (!pointerEffects.matches || event.pointerType === "touch") return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const bounds = card.getBoundingClientRect();
+        const x = Math.max(0, Math.min(1, (pointerX - bounds.left) / bounds.width));
+        const y = Math.max(0, Math.min(1, (pointerY - bounds.top) / bounds.height));
+        card.classList.add("is-pointing");
+        card.style.setProperty("--pointer-x", (x * 100).toFixed(1) + "%");
+        card.style.setProperty("--pointer-y", (y * 100).toFixed(1) + "%");
+        card.style.setProperty("--rotate-x", ((0.5 - y) * 5).toFixed(2) + "deg");
+        card.style.setProperty("--rotate-y", ((x - 0.5) * 5).toFixed(2) + "deg");
+      });
+    }, { passive: true });
+    card.addEventListener("pointerleave", resetCard);
+    card.addEventListener("pointercancel", resetCard);
+    pointerEffects.addEventListener("change", resetCard);
+  });
 }
-
-// Apply debounced scroll handler
-const debouncedScrollHandler = debounce(function() {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
-    }
-}, 10);
-
-window.addEventListener('scroll', debouncedScrollHandler);

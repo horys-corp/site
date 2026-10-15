@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /logo-generator.html
+Disallow: /_forms.html
+Disallow: /obrigado.html
+
+Sitemap: https://horys.dev/sitemap.xml
